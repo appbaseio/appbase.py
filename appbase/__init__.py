@@ -1,12 +1,12 @@
 import connection
-import app
+import application
 
 
 #global methods
 
 #appbase.app(app, secret)
-def app(app, secret):
-  return app.App(app, secret)
+def app(appN, secret):
+  return application.App(appN, secret)
 
 def serverTime():
   return connection.req('get', '/time')

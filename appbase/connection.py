@@ -11,7 +11,7 @@ class Connection:
     self.base_url = config.api_server + "/" + app + "/" + config.v
     self.headers = {'appbase-secret': secret};
 
-  def req(self, method, url, data):
+  def req(self, method, url, data={}, params ={}):
     if(self.base_url == ""):
       raise Exception(errors.BASE_URL)
     r = getattr(requests, method)(self.base_url + url, data=json.dumps(data), headers=self.headers)
