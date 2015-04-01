@@ -1,2 +1,1 @@
-api_server = "https://api.appbase.io"
-v = "v3"
+api_server = "https://v3.api.appbase.io"

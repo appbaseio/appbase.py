@@ -7,6 +7,3 @@ import application
 #appbase.app(app, secret)
 def app(appN, secret):
   return application.App(appN, secret)
-
-def serverTime():
-  return connection.req('get', '/time')

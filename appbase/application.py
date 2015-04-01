@@ -13,4 +13,8 @@ class App:
   def collection(self, c):
     return collection.Collection(c, self)
   
+  def listCollections(self):
+    return self.c.req("get", "/~collections")
   
+  def serverTime(self):
+    return self.c.req('get', '/~timestamp')
