@@ -28,7 +28,7 @@ class Collection:
       return self.app.c.req("delete", self.docPath(key) + "/~properties", { "properties": [props]})
   
   def get(self, key):
-    return self.app.c.req("get", self.docPath(key) + "/~properties")
+    return self.app.c.req("get", self.docPath(key) + "/~properties?stream=true")
   
   def on(self, key, f):
     return pub.subscribe(f, self.docPath(key))
