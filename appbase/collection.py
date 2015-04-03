@@ -23,30 +23,24 @@ class Collection:
   
   def unset(self, key, props):
     if isinstance(props, list):
-      return self.app.c.req("delete", self.docPath(key) + "/~properties", { "properties": props})  
+      return self.app.c.req("delete", self.docPath(key) + "/~properties", { "properties": props})
     else:
       return self.app.c.req("delete", self.docPath(key) + "/~properties", { "properties": [props]})
   
   def get(self, key):
-    return self.app.c.req("get", self.docPath(key) + "/~properties?stream=true")
+    return self.app.c.req("get", self.docPath(key) + "/~properties")
   
   def on(self, key, f):
-    return pub.subscribe(f, self.docPath(key))
+    return self.app.c.on(self.docPath(key) + "/~properties", f)
   
-  def off(self, key, f = None):
-    if f is None:
-      return pub.unsubAll(self.docPath(key))
-    else:
-      return pub.unsubscribe(f, self.docPath(key))
+  def off(self, f):
+    return self.app.c.off(f)
+  
+  def onDocuments(self, f):
+    return self.app.c.on(self.path + "/~documents", f)
   
   def onRef(self, key, f):
-    return pub.subscribe(f, self.docPath(key) + "/~references")
-  
-  def offRef(self, key, f = None):
-    if f is None:
-      return pub.unsubAll(self.docPath(key) + "/~references")
-    else:
-      return pub.unsubscribe(f, self.docPath(key) + "/~references")
+      return self.app.c.on(self.docPath(key) + "/~references", f)
   
   def setRef(self, key, ref, path, priority = None):
     return self.app.c.req("patch", self.docPath(key) + "/~references", {ref: { "path": path, "priority": priority}})

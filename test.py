@@ -1,6 +1,9 @@
 import appbase;
 from pubsub import pub
 
+def p(data):
+  print "\n\nrealtime: ", d, "\n\n"
+
 myApp = appbase.app('rest_test', '193dc4d2440146082ea734f36f4f2638');
 print myApp.search({"query": { "match_all" : {}}});
 print myApp.listCollections();
@@ -10,6 +13,7 @@ myC = myApp.collection('user');
 
 print myC.insert({"foo": "bar"});
 print myC.set('sagar', {"name": "sagar"})
+myC.on('sagar', p);
 print myC.set('sid', {"name": "sid"})
 print myC.get('sagar');
 print myC.getAll({"limit": 3});
@@ -22,4 +26,4 @@ print myC.getRefs('sagar');
 print myC.unsetRef('sagar', ['friend']);
 print myC.getRefs('sagar');
 print myC.delete('sagar');
-
+myC.off(p);
