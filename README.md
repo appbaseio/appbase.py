@@ -96,3 +96,4 @@ myCollection.onDocuments(callbackFunction)
 myCollection.off(theSamecallbackFunction)
 ```
 
+Here's the example usage of these methods: https://github.com/appbaseio/appbase.py/blob/master/test.py
