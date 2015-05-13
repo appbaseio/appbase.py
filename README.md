@@ -1,5 +1,10 @@
 # Python Wrapper for Appbase
 
+Dependencies:
+
+ - twisted - https://pypi.python.org/pypi/Twisted
+ - requests - http://docs.python-requests.org/en/latest/
+ - treq - https://github.com/twisted/treq
 
 Importing
 ```
@@ -64,7 +69,7 @@ error = myCollection.set('id', data)
 myCollection.unset('id', 'propertyName')
 myCollection.unset('id', ["property", "names"])
 
-#5 delete a document - 
+#5 delete a document
 error = myCollection.delete('id')
 
 #7 set a ref - http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-document-references-create-update-document-references

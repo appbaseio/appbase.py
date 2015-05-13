@@ -1,5 +1,4 @@
 import uuid
-from pubsub import pub
 
 class Collection:
   def __init__(self, collection, appInst):

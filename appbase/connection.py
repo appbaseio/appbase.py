@@ -3,8 +3,6 @@ import errors
 import requests
 import json
 import treq
-from pubsub import pub
-import treq
 from threading import Thread
 from twisted.internet import reactor
 from time import sleep

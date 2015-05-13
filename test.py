@@ -1,5 +1,4 @@
 import appbase;
-from pubsub import pub
 
 def p(data):
   print "\n\nrealtime: ", d, "\n\n"
